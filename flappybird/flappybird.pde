@@ -7,6 +7,7 @@ int pipe=1050;
 int pipeheight=250;
 int velocity=0;
 boolean isflying=true;
+int score=0;
 void draw() {
   if (isflying==true) {
     background(41, 42, 43); 
@@ -14,7 +15,7 @@ void draw() {
     int gravity=1;
     velocity=velocity+gravity;
     if (mousePressed) {
-      velocity=-5000;
+      velocity=-4;
     }
 
     y=y+velocity;
@@ -29,7 +30,7 @@ void draw() {
     if (pipe<0) {
       teleport();
     }
-    if (x==pipe) {
+    if (x<=pipe+12 && x>=pipe-12) {
       if (y<=pipeheight) {
         isflying=false;
       }
@@ -43,4 +44,9 @@ void draw() {
 void teleport() {
   pipe=1050;
   pipeheight=(int) random(100, 400);
+  score+=1;
+  printscore();
 } 
+void printscore(){
+println(score);
+}
